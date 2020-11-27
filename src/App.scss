@@ -20,7 +20,7 @@ body {
 .board {
   &,
   .box,
-  .square {
+  .cell {
     display: flex;
     box-sizing: border-box;
   }
@@ -39,7 +39,7 @@ body {
     width: 150px;
     height: 150px;
 
-    .square {
+    .cell {
       justify-content: center;
       align-items: center;
       width: 50px;
