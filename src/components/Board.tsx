@@ -3,13 +3,16 @@ import Box from './Box';
 
 const Board = () => {
   return (
-    <div className="board">
-      {[...Array(9)].map((e, i) => 
-        <Box 
-          key={i} 
-          value={i}
-        />)}
-    </div>
+    <React.Fragment>
+      <h1>Sudoku solver</h1>
+      <div className="board">
+        {[...Array(9)].map((e, i) =>
+          <Box
+            key={i}
+            value={i}
+          />)}
+      </div>
+    </React.Fragment>
   );
 }
 
