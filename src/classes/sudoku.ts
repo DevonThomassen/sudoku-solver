@@ -1,3 +1,5 @@
+import CellData from "../interfaces/CellData";
+
 class Sudoku {
   private grid: number[][];
 
@@ -19,6 +21,11 @@ class Sudoku {
     return this.grid;
   }
 
+  public updateGrid(cell: CellData) {
+    console.log("update!");
+
+    this.grid[cell.row][cell.col] = cell.value;
+  }
 
   public getBox = (boxNumber: number): number[] => {
     switch (boxNumber) {
