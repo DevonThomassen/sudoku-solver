@@ -11,7 +11,7 @@ body {
   background-color: darkslategrey;
 }
 
-#root {
+#root, .game {
   display: flex;
   flex-direction: column;
   justify-content: center;
