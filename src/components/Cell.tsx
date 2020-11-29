@@ -1,8 +1,11 @@
 import React, { ChangeEvent, Component, KeyboardEvent } from 'react';
+import CellData from '../interfaces/CellData';
 
 interface Props {
   readonly row: number;
   readonly col: number;
+  readonly value: number;
+  update: (cellData: CellData) => void;
 }
 
 interface State {
@@ -15,9 +18,10 @@ class Cell extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
+    // TODO: Remove all the state 🗑️ code
     this.state = {
-      number: null,
-      value: ''
+      number: props.value,
+      value: props.value.toString()
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -32,7 +36,13 @@ class Cell extends Component<Props, State> {
         this.setState({
           number: number,
           value: number.toString()
-        })
+        });
+        const _cell: CellData = {
+          row: this.props.row,
+          col: this.props.col,
+          value: number
+        }
+        this.props.update(_cell);
       }
       return;
     }
@@ -57,11 +67,7 @@ class Cell extends Component<Props, State> {
 
   render() {
     return (
-      //<div className={`square row-${props.row} col-${props.col}`}
-      <div className="cell"
-        data-row={this.props.row}
-        data-col={this.props.col}
-      >
+      <div className="cell">
         <input
           type="text"
           value={this.state.value}
